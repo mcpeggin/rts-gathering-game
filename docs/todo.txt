@@ -1,0 +1,37 @@
+[] mouse hover on unit, structure, resource for the indicator
+[] mouse click on unit, structure, resource: leaves indicator on
+
+[] click makes unit SELECTED
+	[] if unit is selected then on RIGHT CLICK can click the resource to gather:
+		[] pathfind to the resource
+		[] stop at resource
+		[] make right tool according to resource visible
+		[] attack/gather animation
+		[] resource count decreases
+			[] if resource count is 0 then resource disappears:
+				[] resource is destroyed:
+					[] tree falls down animation (warcraft 3 style) leaving a stump
+					[] rock crumbles animation
+					[] fish has a finite amount swimming, so it will be visible
+					[] berries and leaves disappear from the bush leaving the naked branches
+					[] dead animal leaves a carcass
+					[] grain patch is empty
+		[] unit resource count increases
+			[] if unit resource count is full:
+				[] unit stops gathering
+				[] resource appears obn the back of the unit
+				[] tool disappears (visible = false)
+				[] unit pathfinds to the nearest NOT FULL drop point
+				[] unit stops at drop point
+				[] resource disappears from his back
+				[] resource count of the drop point increases
+				[] unit goes back to the same resource it gathered if it wasnt exhausted
+			[] else goes to the nearest resource of the same type on that location and go to line 6
+		[] when all nearby resources of that type are exhausted:
+			[] unit idles near the drop point
+			[] idle animation plays
+			[] idle villagers counter goes up
+
+[] idle villagers btn
+	[] on click camera centers on the idle villager
+		[] if more than 1 then it cycles through them on each click

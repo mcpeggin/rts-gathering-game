@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://xa2wir6kvwny"]
+
+[ext_resource type="Script" uid="uid://e47ylk45ygvr" path="res://Tent.gd" id="1_e1t4m"]
+[ext_resource type="Texture2D" uid="uid://dkixbgf53pjns" path="res://assets/Tilesheet/colored-transparent_packed.png" id="1_eseoo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcbcq"]
+atlas = ExtResource("1_eseoo")
+region = Rect2(112, 320, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_e1t4m"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eseoo"]
+atlas = ExtResource("1_eseoo")
+region = Rect2(576, 192, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eseoo"]
+
+[node name="Tent" type="Node2D"]
+script = ExtResource("1_e1t4m")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bcbcq")
+
+[node name="ResourceCounter" type="Label" parent="Body"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -37.0
+offset_right = 18.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.0064386)
+size_flags_horizontal = 4
+text = "10 / 10"
+label_settings = SubResource("LabelSettings_e1t4m")
+horizontal_alignment = 1
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_eseoo")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_eseoo")
+
+[node name="DispenseTimer" type="Timer" parent="."]
+wait_time = 0.5

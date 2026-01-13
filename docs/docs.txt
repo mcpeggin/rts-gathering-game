@@ -1,0 +1,4 @@
+AbstractSelectableStatic:
+	abstract - not attached to any entity specifically
+	selectable - can be selected and interacted with
+	static - is immovable (bulidings, resources etc.)

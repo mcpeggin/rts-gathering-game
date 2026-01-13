@@ -1,0 +1,4 @@
+gather/storing should belong to villager:
+	because logic is just the reverse either + - or - + the recources
+	so it will save code space and make it logically in right place
+	and i can edit it via villager in one space (timer)
