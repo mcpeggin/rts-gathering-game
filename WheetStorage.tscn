@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://denjc5rd5jt17"]
+
+[ext_resource type="Script" uid="uid://e47ylk45ygvr" path="res://StorageBuilding.gd" id="1_2cnbs"]
+[ext_resource type="Texture2D" uid="uid://dkixbgf53pjns" path="res://assets/Tilesheet/colored-transparent_packed.png" id="1_m2dfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cnbs"]
+atlas = ExtResource("1_m2dfb")
+region = Rect2(304, 160, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlig0"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o74nn"]
+atlas = ExtResource("1_m2dfb")
+region = Rect2(576, 192, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4crfr"]
+
+[node name="WheetStorage" type="Node2D" groups=["storages", "wheet_storages"]]
+script = ExtResource("1_2cnbs")
+qty = 30
+type = 2
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_2cnbs")
+
+[node name="ResourceCounter" type="Label" parent="Body"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -37.0
+offset_right = 18.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.0064386)
+size_flags_horizontal = 4
+text = "0 / 20"
+label_settings = SubResource("LabelSettings_mlig0")
+horizontal_alignment = 1
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_o74nn")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_4crfr")
+
+[node name="DispenseTimer" type="Timer" parent="."]
+wait_time = 0.5

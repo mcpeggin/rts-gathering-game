@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://cudpfgm4aef8v"]
+
+[ext_resource type="Script" uid="uid://behe2qmygt04d" path="res://Good.gd" id="1_doima"]
+[ext_resource type="Texture2D" uid="uid://dkixbgf53pjns" path="res://assets/Tilesheet/colored-transparent_packed.png" id="1_hkhaq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doima"]
+atlas = ExtResource("1_hkhaq")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m880f"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkhaq"]
+atlas = ExtResource("1_hkhaq")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ckkv"]
+atlas = ExtResource("1_hkhaq")
+region = Rect2(576, 192, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usfg7"]
+
+[node name="Wheet" type="Node2D" groups=["goods", "wheet"]]
+script = ExtResource("1_doima")
+qty = 4
+type = 2
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_doima")
+
+[node name="ResourceCounter" type="Label" parent="Body"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -37.0
+offset_right = 18.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.0064386)
+size_flags_horizontal = 4
+text = "10 / 10"
+label_settings = SubResource("LabelSettings_m880f")
+horizontal_alignment = 1
+
+[node name="DeadBody" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.2600005, 1.2600005)
+texture = SubResource("AtlasTexture_hkhaq")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_6ckkv")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_usfg7")
+
+[node name="GatherTimer" type="Timer" parent="."]
+wait_time = 0.5

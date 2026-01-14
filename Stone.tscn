@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpsfw6at3s2ye"]
+
+[ext_resource type="Texture2D" uid="uid://dkixbgf53pjns" path="res://assets/Tilesheet/colored-transparent_packed.png" id="1_177fh"]
+[ext_resource type="Script" uid="uid://behe2qmygt04d" path="res://Good.gd" id="1_ymqyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_177fh"]
+atlas = ExtResource("1_177fh")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymqyl"]
+font_size = 8
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmean"]
+atlas = ExtResource("1_177fh")
+region = Rect2(576, 192, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0q1l"]
+
+[node name="Stone" type="Node2D" groups=["goods", "stones"]]
+script = ExtResource("1_ymqyl")
+qty = 4
+type = 1
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_177fh")
+
+[node name="ResourceCounter" type="Label" parent="Body"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -37.0
+offset_right = 18.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1.0064386)
+size_flags_horizontal = 4
+text = "10 / 10"
+label_settings = SubResource("LabelSettings_ymqyl")
+horizontal_alignment = 1
+
+[node name="DeadBody" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+
+[node name="Indicator" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_bmean")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="Area"]
+shape = SubResource("RectangleShape2D_m0q1l")
+
+[node name="GatherTimer" type="Timer" parent="."]
+wait_time = 0.5
