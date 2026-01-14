@@ -3,6 +3,8 @@ class_name AbstractSelectableUnit extends CharacterBody2D
 @onready var area = $Area
 @onready var indicator = $Indicator
 
+@onready var counter = $Body/ResourceCapacity
+
 var speed = 50
 var click_pos = Vector2()
 var target_pos = Vector2()
@@ -44,10 +46,12 @@ func _input(event):
 
 func _on_mouse_entered():
 	is_hover = true
+	counter.visible = true
 	indicator.visible = true
 
 func _on_mouse_exited():
 	is_hover = false
+	counter.visible = false
 	if not is_selected:
 		indicator.visible = false
 		

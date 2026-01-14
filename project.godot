@@ -19,6 +19,17 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+storages=""
+wheet_storages=""
+stone_storages=""
+wood_storages=""
+goods=""
+trees=""
+stones=""
+wheet=""
+
 [input]
 
 left_click={

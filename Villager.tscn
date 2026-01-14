@@ -18,12 +18,13 @@ region = Rect2(576, 192, 16, 16)
 
 [node name="Villager" type="CharacterBody2D" groups=["villagers"]]
 script = ExtResource("1_lr84n")
-max_capacity = 10
+max_capacity = 2
 
 [node name="Body" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_c6gwx")
 
 [node name="ResourceCapacity" type="Label" parent="Body"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -37,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 1.0064386)
 size_flags_horizontal = 4
-text = "0 / 10"
+text = "0 / 2"
 label_settings = SubResource("LabelSettings_lr84n")
 horizontal_alignment = 1
 
@@ -53,3 +54,4 @@ shape = SubResource("RectangleShape2D_06xtj")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_06xtj")
+disabled = true
