@@ -1,3 +1,4 @@
+@tool
 class_name Good extends AbstractSelectableStatic
 
 @onready var resource_counter: Label = $Body/ResourceCounter
@@ -6,7 +7,13 @@ class_name Good extends AbstractSelectableStatic
 @onready var body: Sprite2D = $Body
 @onready var dead_body: Sprite2D = $DeadBody
 
-@export var qty: int
+@export var qty: int:
+	set(value):
+		qty = value
+		max_capacity = qty
+		qty_available = max_capacity
+		if is_node_ready():
+			update_available_resource_label()
 
 enum TYPES {WOOD, STONE, FOOD}
 @export var type: TYPES
@@ -20,6 +27,8 @@ var max_capacity: int
 
 func _ready():
 	super._ready() # call AbstractSelectableStatic first, so shit works
+	add_to_group("goods")
+	add_to_group("trees")
 	max_capacity = qty
 	qty_available = max_capacity
 	
@@ -30,10 +39,25 @@ func _ready():
 	
 	gather_timer.timeout.connect(_on_gather_tick)
 
+# the rest of the indication logic is in abstract, this one is here cause vilalgers mentioned,
+# which means it is already messed up
+
+func _input(event):
+	super._input(event)
+	
+	if get_tree().get_nodes_in_group('selected_villagers').size() > 0:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			if is_hover:
+				var selected = get_tree().get_nodes_in_group('selected_villagers')
+				for villager in selected:
+					villager.assign_good(self)
+
 func update_available_resource_label():
 	resource_counter.text = "%d / %d" % [qty_available, max_capacity]
 	
 	if qty_available == 0:
+		if gatherer != null and gatherer.cur_state == gatherer.STATES.GATHERING:
+			gatherer.on_good_depleted()
 		stop_gathering()
 		body.visible = false
 		dead_body.visible = true
@@ -68,4 +92,6 @@ func _on_gather_tick():
 		gatherer.update_gathered_resource_label()
 		update_available_resource_label()
 	else:
+		if gatherer != null and gatherer.cur_state == gatherer.STATES.GATHERING:
+			gatherer.go_to_storage()
 		stop_gathering()

@@ -1,9 +1,15 @@
+@tool
 class_name Building extends AbstractSelectableStatic
 
 @onready var resource_counter: Label = $Body/ResourceCounter
 @onready var dispense_timer: Timer = $DispenseTimer
 
-@export var qty: int
+@export var qty: int:
+	set(value):
+		qty = value
+		max_capacity = qty
+		if is_node_ready():
+			update_stored_resource_label()
 
 enum TYPES {WOOD, STONE, FOOD}
 @export var type: TYPES
@@ -17,6 +23,7 @@ var max_capacity: int
 
 func _ready():
 	super._ready() # call AbstractSelectableStatic first, so shit works
+	add_to_group('tree_storage') # i did it via engine, but to be sure
 	max_capacity = qty
 	
 	update_stored_resource_label()
@@ -60,4 +67,6 @@ func _on_gather_tick():
 		gatherer.update_gathered_resource_label()
 		update_stored_resource_label()
 	else:
+		if gatherer != null and gatherer.cur_state == gatherer.STATES.STORING:
+			gatherer.return_to_good_or_idle()
 		stop_storing()

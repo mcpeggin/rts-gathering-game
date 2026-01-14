@@ -18,6 +18,9 @@ func _ready():
 # unit movement
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	
 	if Input.is_action_just_pressed("right_click") and is_selected:
 		click_pos = get_global_mouse_position()
 	
@@ -27,6 +30,9 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func _input(event):
+	if Engine.is_editor_hint():
+		return
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if is_hover:
 			is_selected = true
@@ -44,3 +50,4 @@ func _on_mouse_exited():
 	is_hover = false
 	if not is_selected:
 		indicator.visible = false
+		

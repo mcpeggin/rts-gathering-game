@@ -1104,11 +1104,20 @@ tile_set = SubResource("TileSet_2dftf")
 
 [node name="Villager" parent="." instance=ExtResource("2_2dftf")]
 position = Vector2(557, 347)
-max_capacity = 5
+max_capacity = 2
 
 [node name="Tree" parent="." instance=ExtResource("3_bcbcq")]
 position = Vector2(620, 308)
+qty = 4
+
+[node name="Tree2" parent="." instance=ExtResource("3_bcbcq")]
+position = Vector2(644, 271)
+qty = 4
+
+[node name="Tree3" parent="." instance=ExtResource("3_bcbcq")]
+position = Vector2(685, 314)
+qty = 4
 
 [node name="Tent" parent="." instance=ExtResource("4_js7pq")]
 position = Vector2(521, 298)
-qty = 10
+qty = 12

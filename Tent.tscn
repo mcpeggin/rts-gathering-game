@@ -16,7 +16,7 @@ region = Rect2(576, 192, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eseoo"]
 
-[node name="Tent" type="Node2D"]
+[node name="Tent" type="Node2D" groups=["tree_storage"]]
 script = ExtResource("1_e1t4m")
 
 [node name="Body" type="Sprite2D" parent="."]
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 1.0064386)
 size_flags_horizontal = 4
-text = "10 / 10"
+text = "0 / 0"
 label_settings = SubResource("LabelSettings_e1t4m")
 horizontal_alignment = 1
 

@@ -16,7 +16,7 @@ region = Rect2(576, 192, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06xtj"]
 
-[node name="Villager" type="CharacterBody2D"]
+[node name="Villager" type="CharacterBody2D" groups=["villagers"]]
 script = ExtResource("1_lr84n")
 max_capacity = 10
 
@@ -37,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(1, 1.0064386)
 size_flags_horizontal = 4
-text = "10 / 10"
+text = "0 / 10"
 label_settings = SubResource("LabelSettings_lr84n")
 horizontal_alignment = 1
 

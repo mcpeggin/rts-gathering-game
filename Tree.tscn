@@ -20,7 +20,7 @@ region = Rect2(576, 192, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dn7q5"]
 
-[node name="Tree" type="Node2D"]
+[node name="Tree" type="Node2D" groups=["trees"]]
 script = ExtResource("1_dn7q5")
 qty = 10
 
