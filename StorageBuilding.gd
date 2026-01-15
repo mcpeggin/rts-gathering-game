@@ -39,6 +39,16 @@ func _ready():
 	
 	dispense_timer.timeout.connect(_on_gather_tick)
 
+func _input(event):
+	super._input(event)
+	
+	if get_tree().get_nodes_in_group('selected_villagers').size() > 0:
+		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+			if is_hover:
+				var selected = get_tree().get_nodes_in_group('selected_villagers')
+				for villager in selected:
+					villager.assign_storage(self)
+
 func update_stored_resource_label():
 	resource_counter.text = "%d / %d" % [qty_stored, max_capacity]
 	

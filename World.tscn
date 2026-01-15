@@ -35,32 +35,32 @@ script = ExtResource("1_eu7l1")
 position = Vector2(574, 326)
 
 [node name="Villager" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(530, 312)
+position = Vector2(504, 311)
 max_capacity = 5
 
 [node name="Villager4" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(575, 274)
+position = Vector2(592, 265)
 
 [node name="Villager5" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(605, 300)
+position = Vector2(620, 293)
 
 [node name="Villager6" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(614, 331)
+position = Vector2(635, 335)
 
 [node name="Villager2" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(526, 342)
+position = Vector2(516, 361)
 
 [node name="Villager3" parent="." instance=ExtResource("2_2dftf")]
-position = Vector2(541, 283)
+position = Vector2(518, 277)
 
 [node name="StoneStorage" parent="." instance=ExtResource("6_wygdx")]
-position = Vector2(569, 302)
+position = Vector2(553, 300)
 
 [node name="WoodStorage" parent="." instance=ExtResource("4_js7pq")]
-position = Vector2(560, 335)
+position = Vector2(553, 343)
 
 [node name="WheetStorage" parent="." instance=ExtResource("5_eu7l1")]
-position = Vector2(589, 329)
+position = Vector2(596, 330)
 
 [node name="Stone" parent="." instance=ExtResource("6_p1v5b")]
 position = Vector2(504, 213)

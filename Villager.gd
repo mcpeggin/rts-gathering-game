@@ -36,7 +36,11 @@ func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	
+	var saved_click_pos = click_pos
 	super._physics_process(delta)
+	
+	if _just_assigned_good:
+		click_pos = saved_click_pos
 	
 	if Input.is_action_just_pressed("right_click") and is_selected:
 		if not _just_assigned_good:
@@ -65,6 +69,37 @@ func assign_good(good):
 	cur_state = STATES.MOVING_TO_GOODS
 	click_pos = good.position
 	_just_assigned_good = true
+
+func assign_storage(storage):
+	assigned_storage = storage
+	var good = find_nearest_good_by_type(storage)
+	
+	if good:
+		assigned_good = good
+		cur_state = STATES.MOVING_TO_GOODS
+		click_pos = good.position
+	else:
+		cur_state = STATES.IDLE
+	
+	_just_assigned_good = true
+
+func find_nearest_good_by_type(storage):
+	var goods = get_tree().get_nodes_in_group('goods')
+	var nearest = null
+	var nearest_dist = INF
+	
+	for good in goods:
+		if storage.type != storage.TYPES.ANY and good.type != storage.type:
+			continue
+		if good.qty_available <= 0:
+			continue
+		
+		var dist = position.distance_to(good.position)
+		if dist < nearest_dist:
+			nearest_dist = dist
+			nearest = good
+	
+	return nearest
 
 func _on_moved_to_goods():
 	match cur_state:

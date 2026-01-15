@@ -12,6 +12,11 @@ func _ready():
 	area.connect("mouse_exited", _on_mouse_exited)
 
 func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if not is_hover:
+			is_selected = false
+			indicator.visible = false
+	
 	if get_tree().get_nodes_in_group('selected_villagers').size() > 0:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 			if is_hover:

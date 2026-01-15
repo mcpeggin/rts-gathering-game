@@ -17,6 +17,7 @@ region = Rect2(576, 192, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eseoo"]
 
 [node name="WoodStorage" type="Node2D" groups=["storages", "wood_storages"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_e1t4m")
 qty = 30
 
